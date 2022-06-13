@@ -39,9 +39,8 @@ const[text,setText]=useState("");
     setText(newString);
   }
 
-  const DownloadPDF=()=>{
-    
-   
+  const RemoveExtraSpaces=()=>{
+    setText(text.trim());
   }
 
   const HandleOnChange=(event)=>{
@@ -60,9 +59,9 @@ const[text,setText]=useState("");
       <button className="btn btn-primary ms-2" onClick={HandleLowerClick}>lower case</button>
       <button className="btn btn-primary ms-2" onClick={HandleClearText}>Clear</button>
       <button className="btn btn-primary ms-2" onClick={CopyToClipboard}>Copy to clipboard</button>
-      <button className="btn btn-primary ms-2" onClick={DownloadPDF}>Download PDF</button>
       <button className="btn btn-primary ms-2" onClick={ReverseWords}>Reverse words</button>
       <button className="btn btn-primary ms-2" onClick={ReverseCharacters}>Reverse Characters</button>
+      <button className="btn btn-primary ms-2" onClick={RemoveExtraSpaces}>Remove Extra Spaces</button>
 
       <div className="container my-3">
         <h1>Your text summary</h1>
