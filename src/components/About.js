@@ -33,7 +33,7 @@ export default function About() {
 
   return (
     <div className="container" style={myStyle}>
-        <h1 class="my-3">About Us</h1>
+        <h1 className="my-3">About Us</h1>
         <div className="accordion" id="accordionExample">
     <div className="accordion-item" style={myStyle}>
         <h2 className="accordion-header" id="headingOne">
@@ -73,7 +73,7 @@ export default function About() {
     </div>
     </div>
     <div className="container mt-3">
-        <button class="btn btn-primary mb-3" onClick={toggleStyle}>{btnText}</button>
+        <button className="btn btn-primary mb-3" onClick={toggleStyle}>{btnText}</button>
     </div>
 </div>
   )

@@ -39,9 +39,20 @@ const[text,setText]=useState("");
     setText(newString);
   }
 
-  const RemoveExtraSpaces=()=>{
+  const Trim=()=>{
     setText(text.trim());
   }
+  const RemoveExtraSpace=()=>{
+    var arr=text.split(" ");
+    var r="";
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].length>0){
+     r+=arr[i]+" ";
+      }
+    }
+    setText(r.trimEnd());
+  }
+  
 
   const HandleOnChange=(event)=>{
 
@@ -51,27 +62,27 @@ const[text,setText]=useState("");
 
  return (
      <>
-     <h1>{props.heading}</h1>
+     <h1 style={{color:props.mode==='dark'?'white':'black'}}>{props.heading}</h1>
       <div className=" container mb-3">
-        <textarea className="form-control" value={text} name="myBox" placeholder="Enter your text here..." onChange={HandleOnChange} id="myBox" rows="10"></textarea>
+        <textarea className="form-control" value={text} name="myBox" style={{backgroundColor:props.mode==='dark'?'#32363a':'white',color:props.mode==='dark'?'white':'black'}} placeholder="Enter your text here..." onChange={HandleOnChange} id="myBox" rows="10"></textarea>
       </div>
       <button className="btn btn-primary" onClick={HandleUpperClick}>UPPER CASE</button>
       <button className="btn btn-primary ms-2" onClick={HandleLowerClick}>lower case</button>
-      <button className="btn btn-primary ms-2" onClick={HandleClearText}>Clear</button>
       <button className="btn btn-primary ms-2" onClick={CopyToClipboard}>Copy to clipboard</button>
       <button className="btn btn-primary ms-2" onClick={ReverseWords}>Reverse words</button>
       <button className="btn btn-primary ms-2" onClick={ReverseCharacters}>Reverse Characters</button>
-      <button className="btn btn-primary ms-2" onClick={RemoveExtraSpaces}>Remove Extra Spaces</button>
+      <button className="btn btn-primary ms-2" onClick={RemoveExtraSpace}>Remove Extra Space</button>
+      <button className="btn btn-primary ms-2" onClick={Trim}>Trim</button>
+      <button className="btn btn-primary ms-2" onClick={HandleClearText}>Clear</button>
 
-      <div className="container my-3">
+      <div className="container my-3" style={{color:props.mode==='dark'?'white':'black'}}>
         <h1>Your text summary</h1>
         <p> {(text.split(" ")).length} words and {text.length} characters</p>
         <p>{0.008*(text.split(" ")).length} minutes to read it.</p>
+        <h2>Preview</h2>
+        <p>{text.length>0?text:"Enter something in above textbox for preview.."}</p>
       </div>
-      <h3>Preview</h3>
-      <div className=" container mb-3">
-        <textarea className="form-control" value={text} readOnly rows="10"></textarea>
-      </div>
+      
 </>
   )
 }   
